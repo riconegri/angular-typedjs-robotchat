@@ -1,0 +1,27 @@
+<div class="question" *ngFor="let q of question.inputs">
+  <div *ngIf="q.type === 'string' || q.type === 'number'" class="sector">
+    <div class="wrn-row wrn-container">
+      <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+        <input type="text"
+               #algo
+               [(ngModel)]="reply"
+               placeholder="digite aqui"
+               required="true"
+        >
+      </div>
+      <div class="wrn-c-sm-3 wrn-c-lg-2">
+        <button type="button" (click)="replyQuestion()" class="wrn-button">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn" *ngFor="let b of question.buttons">
+      <button type="button"
+         (click)="replyQuestion(b.value);">{{b.label.title}}</button>
+</div>
+
+<div class="btn" *ngIf="question.id === 'final'">
+  <button (click)="replyQuestion()">{{question.messages[0].value}}</button>
+</div>
+
