@@ -1,7 +1,10 @@
 export class Robot {
-  id: string;
-  messages: any[];
-  buttons: any[];
-  inputs: any[];
-  responses: any[];
+
+  constructor(
+    public id: string,
+    public messages?: any[],
+    public buttons?: any[],
+    public inputs?: any[],
+    public responses?: any[]
+  ) {}
 }

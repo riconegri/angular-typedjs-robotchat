@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Robot} from './robot';
 import {RobotService} from './robot.service';
 // import * as Typed from 'typed.js';
 // import * as Typed from 'typed.js';
@@ -12,27 +13,24 @@ export class AppComponent implements OnInit {
   title = 'app';
   typed = null;
   messages = [];
-  question = {};
+  question: Robot;
 
-  constructor(private robotService: RobotService) {
-  }
+  constructor(private robotService: RobotService) {}
 
   ngOnInit() {
 
     const answer = {id: null, 'answers': {}, context: 'suitability'};
     this.robotService.updateRobot(answer)
-      .subscribe(result => {
+      .subscribe((result: Robot) => {
         this.messages.push(...result.messages);
-        this.question = result;
+        this.question = new Robot(
+          result.id,
+          result.messages,
+          result.buttons,
+          result.inputs,
+          result.responses
+        );
 
-        console.log(this.messages);
-        // this.typed = new Typed('.typed', {
-        //   strings: this.messages.map(v => v.value ),
-        //   smartBackspace: false, // Default value,
-        //   // onComplete: (a) => console.log(a),
-        //   // on: (a) => console.log(a),
-        // });
-        console.log(this.typed);
       });
   }
 

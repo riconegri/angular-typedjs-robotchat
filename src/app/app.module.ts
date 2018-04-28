@@ -8,20 +8,26 @@ import {RobotService} from './robot.service';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { QuestionComponent } from './question/question.component';
+import { ButtonsComponent } from './buttons/buttons.component';
+import {MessageService} from './message.service';
+import {MatButtonModule} from '@angular/material';
+
 
 
 @NgModule({
+  exports: [MatButtonModule],
   declarations: [
     AppComponent,
     MessageComponent,
-    QuestionComponent
+    QuestionComponent,
+    ButtonsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [RobotService],
+  providers: [RobotService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

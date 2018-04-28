@@ -1,10 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center;height: 5%;">
   <h1>Descobrindo seu Perfil</h1>
 </div>
 <!--<app-messages></app-messages>-->
-<span class="typed"></span>
-<div *ngFor="let message of messages;let idx=index">
-  <app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>
+<div class="container">
+  <div *ngFor="let message of messages;let idx=index">
+    <app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>
+  </div>
 </div>
-<app-question-component [question]="question" [messages]="messages"></app-question-component>
+
+<app-question-component class="footer" [question]="question" [messages]="messages"></app-question-component>
