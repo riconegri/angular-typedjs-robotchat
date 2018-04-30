@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Robot} from './robot';
 import {RobotService} from './robot.service';
-// import * as Typed from 'typed.js';
-// import * as Typed from 'typed.js';
+import {MessageService} from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +9,12 @@ import {RobotService} from './robot.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'Descobrindo seu Perfil';
   typed = null;
   messages = [];
   question: Robot;
 
-  constructor(private robotService: RobotService) {}
+  constructor(private robotService: RobotService, public messageService: MessageService) {}
 
   ngOnInit() {
 
@@ -23,6 +22,7 @@ export class AppComponent implements OnInit {
     this.robotService.updateRobot(answer)
       .subscribe((result: Robot) => {
         this.messages.push(...result.messages);
+        this.messageService.totalMessages = this.messages.length;
         this.question = new Robot(
           result.id,
           result.messages,

@@ -19,7 +19,7 @@ export class QuestionComponent {
     context: 'suitability'
   };
 
-  constructor(private robotService: RobotService, private messageService: MessageService) {}
+  constructor(private robotService: RobotService, public messageService: MessageService) {  }
 
   replyQuestion(dataFromButton) {
     console.log(this.answer);
@@ -42,7 +42,6 @@ export class QuestionComponent {
         this.question = result;
         this.reply = '';
       });
-    // delete this.question.inputs;
   }
 
 }

@@ -51,14 +51,13 @@ export class MessageComponent implements OnInit, AfterContentChecked {
       return false;
     }
     this.messageService.idx += 1;
-    console.log(this.messageService.totalMessages, this.idx);
+    console.log((this.messageService.totalMessages - 1), this.idx);
 
     return new typedClass(cls, {
       strings: [this.message],
       showCursor: false,
       smartBackspace: false, // Default value,
       onComplete: () => this.messageService.setState(0)
-      // on: (a) => console.log(a),
     });
   }
 }
