@@ -1,0 +1,14 @@
+input {
+  height: 48px;
+  font-size: 18px;
+}
+
+button {
+  height: 50px;
+  border: none;
+  min-width: 150px;
+  background-color: #ff6c00;
+  color: #fff;
+  font-size: 23px;
+  text-transform: uppercase;
+}
