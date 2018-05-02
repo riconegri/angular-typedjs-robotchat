@@ -1,6 +1,6 @@
 <div class="container" layout="row">
   <div *ngFor="let message of stepList;let idx=index">
-    <p [ngClass]="message.alignRight ? ('alignRight typed' + idx) : ('typed' + idx)"></p>
+    <p [ngStyle]="message.style" [ngClass]="message.alignRight ? ('alignRight typed' + idx) : ('typed' + idx)"></p>
     <!--<app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>-->
   </div>
 

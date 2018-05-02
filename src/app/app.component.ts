@@ -7,7 +7,7 @@ import * as data from './suitability.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Descobrindo seu Perfil';
+  title = 'Discovery your profile';
   typed = null;
   survey: any[];
   reply: any = {};
@@ -15,27 +15,7 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // const word = (<any>data).name;
+    // init survey data
     this.survey = <any>data;
-    this.updateReply();
-
-    // const answer = {id: null, 'answers': {}, context: 'suitability'};
-    // this.robotService.updateRobot(answer)
-    //   .subscribe((result: Robot) => {
-    //     this.messages.push(...result.messages);
-    //     this.messageService.totalMessages = this.messages.length;
-    //     this.question = new Robot(
-    //       result.id,
-    //       result.messages,
-    //       result.buttons,
-    //       result.inputs,
-    //       result.responses
-    //     );
-    //
-    //   });
-  }
-
-  private updateReply (attr?: any) {
-    console.log('isso', attr, this);
   }
 }
