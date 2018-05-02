@@ -7,14 +7,16 @@ import * as data from './suitability.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Discovery your profile';
+  title: string;
   typed = null;
   survey: any[];
-  reply: any = {};
+  reply: any;
 
   constructor() {}
 
   ngOnInit() {
+    this.title = 'Discovery your profile';
+    this.reply = {};
     // init survey data
     this.survey = <any>data;
   }

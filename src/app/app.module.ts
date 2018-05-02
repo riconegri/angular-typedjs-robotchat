@@ -1,25 +1,23 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
 import {MatButtonModule} from '@angular/material';
-import { RobotComponent } from './robot/robot.component';
-
+import {RobotModule} from './robot/robot.module';
 
 
 @NgModule({
   exports: [MatButtonModule],
   declarations: [
-    AppComponent,
-    RobotComponent,
+    AppComponent
   ],
+  schemas: [],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    RobotModule
   ],
   providers: [],
   bootstrap: [AppComponent]

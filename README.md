@@ -3,6 +3,8 @@
 This version don't use a server to make Robot run.
 A file with the sample data is in src folder, your name is `suitability.json`.
 
+The old server version get [Here](https://github.com/riconegri/angular-test/tree/Server)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
