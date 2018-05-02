@@ -1,6 +1,7 @@
 # RobotApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This version don't use a server to make Robot run.
+A file with the sample data is in src folder, your name is `suitability.json`.
 
 ## Development server
 

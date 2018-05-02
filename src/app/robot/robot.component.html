@@ -1,0 +1,53 @@
+<div class="container" layout="row">
+  <div *ngFor="let message of stepList;let idx=index">
+    <p [ngStyle]="message.style" [ngClass]="message.alignRight ? ('alignRight typed' + idx) : ('typed' + idx)"></p>
+    <!--<app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>-->
+  </div>
+
+  <div *ngIf="questionIsReady" class="footer">
+    <div *ngIf="currentStep.type === 'questionInput'" class="sector">
+      <div class="wrn-row wrn-container">
+        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+          <input type="text"
+                 [(ngModel)]="inputValue"
+                 placeholder="{{currentStep?.placeholder}}"
+                 required="true"
+          >
+          <button
+            type="submit"
+            disabled="{{!inputValue ? 'disabled' : ''}}"
+            (click)="processReply()"
+            class="wrn-button"
+            mat-button>Ok
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentStep.type === 'questionInputNumber'" class="sector">
+      <div class="wrn-row wrn-container">
+        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+          <input
+            type="number"
+            [(ngModel)]="inputValue"
+            placeholder="{{currentStep?.placeholder}}"
+            required="true"
+          >
+          <button type="submit" disabled="{{!inputValue ? 'disabled' : ''}}" (click)="processReply()" class="wrn-button" mat-button>Ok
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentStep.type === 'questionChoose'" class="sector">
+      <div class="wrn-row wrn-container">
+        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+          <button
+            type="button"
+            *ngFor="let b of (currentStep.options || [])"
+            (click)="inputValue = b.value;processReply(b.next);">
+            {{b.label.title}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
