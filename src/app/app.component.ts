@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Robot} from './robot';
-import {RobotService} from './robot.service';
-import {MessageService} from './message.service';
+import * as data from './suitability.json';
 
 @Component({
   selector: 'app-root',
@@ -11,33 +9,33 @@ import {MessageService} from './message.service';
 export class AppComponent implements OnInit {
   title = 'Descobrindo seu Perfil';
   typed = null;
-  messages = [];
-  question: Robot;
+  survey: any[];
+  reply: any = {};
 
-  constructor(private robotService: RobotService, public messageService: MessageService) {}
+  constructor() {}
 
   ngOnInit() {
+    // const word = (<any>data).name;
+    this.survey = <any>data;
+    this.updateReply();
 
-    const answer = {id: null, 'answers': {}, context: 'suitability'};
-    this.robotService.updateRobot(answer)
-      .subscribe((result: Robot) => {
-        this.messages.push(...result.messages);
-        this.messageService.totalMessages = this.messages.length;
-        this.question = new Robot(
-          result.id,
-          result.messages,
-          result.buttons,
-          result.inputs,
-          result.responses
-        );
-
-      });
+    // const answer = {id: null, 'answers': {}, context: 'suitability'};
+    // this.robotService.updateRobot(answer)
+    //   .subscribe((result: Robot) => {
+    //     this.messages.push(...result.messages);
+    //     this.messageService.totalMessages = this.messages.length;
+    //     this.question = new Robot(
+    //       result.id,
+    //       result.messages,
+    //       result.buttons,
+    //       result.inputs,
+    //       result.responses
+    //     );
+    //
+    //   });
   }
 
-/*
-  addToTyped(str) {
-    // console.log(this.typed, str);
-    this.typed.strings.push('filho da policia');
+  private updateReply (attr?: any) {
+    console.log('isso', attr, this);
   }
-*/
 }

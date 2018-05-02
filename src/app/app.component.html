@@ -2,15 +2,5 @@
 <div style="text-align:center;height: 5%;">
   <h1>{{title}}</h1>
 </div>
-<!--<app-messages></app-messages>-->
-<div class="container" layout="row">
-  <div *ngFor="let message of messages;let idx=index">
-    <app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>
-  </div>
-</div>
-
-<app-question-component
-  class="footer"
-  [question]="question"
-  [messages]="messages"
-></app-question-component>
+<!--Pass survey data to component-->
+<app-robot [(survey)]="survey"></app-robot>

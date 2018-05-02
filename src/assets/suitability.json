@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "type": "info",
+    "print": "Muito bem! ^700 Você tomou a decisão certa. ^700 Eu estou aqui para te ajudar a investir em objetivos de investimento, ^500 que você mesmo vai criar com a minha ajuda. ^700 Você vai ver como isso tudo pode ser simples. ^700 Já são milhares de pessoas que investem nos seus objetivos comigo, ^500 então não se preocupe. ^700 É seguro. ^1000",
+    "next": 2
+  },
+  {
+    "id": 2,
+    "type": "questionInput",
+    "print": "Antes de começarmos, como posso te chamar? :)",
+    "saveIn": "name",
+    "next": 3
+  },
+  {
+    "id": 3,
+    "type": "info",
+    "variables": [
+      "name"
+    ],
+    "print": "Meu nome é {{name}}",
+    "next": 4
+  },
+  {
+    "id": 4,
+    "type": "info",
+    "variables": [
+      "name"
+    ],
+    "print": "Prazer, {{name}}. ^1000 Então, a primeira coisa a fazer é identificar o seu perfil como investidor. Para isso, vou fazer algumas perguntas básicas, ^300 ok?",
+    "next": 5
+  },
+  {
+    "id": 5,
+    "type": "questionInputNumber",
+    "print": "Qual é a sua idade? ^1000",
+    "saveIn": "age",
+    "compare": [
+      {
+        "type": "<>",
+        "min": 0,
+        "max": 5,
+        "next": 6
+      },
+      {
+        "type": "<>",
+        "min": 6,
+        "max": 17,
+        "next": 7
+      },
+      {
+        "type": "<>",
+        "min": 18,
+        "max": 55,
+        "next": 8
+      },
+      {
+        "type": "<>",
+        "min": 56,
+        "max": 116,
+        "next": 9
+      },
+      {
+        "type": ">",
+        "min": 117,
+        "next": 10
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "info",
+    "print": "Nossa, ^1000 e você já sabe escrever nessa idade? ^1000",
+    "next": 7
+  },
+  {
+    "id": 7,
+    "type": "info",
+    "print": "Ops! ^1000 Menores de 18 ainda não podem investir com o Warren, ^1000 mas você pode continuar experimentando.",
+    "next": 11
+  },
+  {
+    "id": 8,
+    "type": "info",
+    "print": "Ficando Velho, hein! ^1000",
+    "next": 9
+  },
+  {
+    "id": 9,
+    "type": "info",
+    "print": "Você prefere a Madonna ou a Cindy Lauper? ^1000 <erase>(ops... chat errado) :D ^1000",
+    "next": 11
+  },
+  {},
+  {},
+  {
+    "id": 11,
+    "type": "info",
+    "print": "Você prefere verão ou inverno? ^1000 <erase>(ops... chat errado) :D ^1000",
+    "next": 12
+  },
+  {
+    "id": 12,
+    "type": "questionChoose",
+    "print": "Quando surge o assunto investimentos, qual é o seu primeiro pensamento?",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Nem me fale"
+        },
+        "next": 13
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Eu gosto disso"
+        },
+        "next": 14
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "type": "info",
+    "print": "Relaxa, ^300 qq,  eu vou te ajudar. ^1000",
+    "next": 14
+  },
+  {
+    "id": 14,
+    "type": "questionChoose",
+    "print": "E com relação a investir seu dinheiro, o que é mais importante para você?",
+    "saveIn": "preference",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Não perder de jeito nenhum"
+        },
+        "next": 15
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Arriscar para ganhar mais"
+        }
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "type": "info",
+    "print": "Ok. ^500 Já tenho algumas sugestões em mente… ^1000",
+    "next": 16
+  },
+  {
+    "id": 16,
+    "type": "questionInputNumber",
+    "print": "Qual é a sua renda mensal? ^300 Esta informação vai me ajudar com algumas projeções para você (e é sigilosa também).",
+    "saveIn": "income",
+    "compare": [
+      {
+        "type": "<>",
+        "min": 0,
+        "max": 999,
+        "next": 17
+      },
+      {
+        "type": "<>",
+        "min": 1000,
+        "max": 4999,
+        "next": 17
+      },
+      {
+        "type": "<>",
+        "min": 5000,
+        "max": 9999,
+        "next": 17
+      },
+      {
+        "type": ">",
+        "min": 10000,
+        "next": 17
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "type": "questionChoose",
+    "print": "Você lê matérias sobre economia, ^300 bolsa de valores ou investimentos em geral?",
+    "saveIn": "read",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Não"
+        },
+        "next": 18
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Sim"
+        },
+        "next": 18
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "type": "info",
+    "print": "Tudo bem, ^300 é por isso que estou aqui :) ^1000",
+    "next": 19
+  },
+  {
+    "id": 19,
+    "type": "questionChoose",
+    "print": "Nos últimos dois anos, você aplicou em produtos, como ações, LCI/LCA ou debentures?",
+    "saveIn": "investment_experience",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Não"
+        },
+        "next": 20
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Sim"
+        },
+        "next": 20
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "type": "info",
+    "print": "Sem problemas. ^500",
+    "next": 21
+  },
+  {
+    "id": 21,
+    "type": "questionChoose",
+    "print": "Na hora de investir, o que você prefere...",
+    "saveIn": "advice",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Seguir o conselho de alguém"
+        },
+        "next": 22
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Investir no que eu entendo"
+        },
+        "next": 22
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "type": "questionChoose",
+    "print": "Ok. ^500 Quando se trata de dinheiro, ^300 como você se descreveria?",
+    "saveIn": "spend",
+    "options": [
+      {
+        "value": "P",
+        "label": {
+          "title": "Vivo o momento sem planejar"
+        },
+        "next": 23
+      },
+      {
+        "value": "A",
+        "label": {
+          "title": "Faço orçamento para tudo"
+        },
+        "next": 23
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "type": "info",
+    "print": "Carpe diem! ^1000",
+    "next": 24
+  },
+  {
+    "id": 24,
+    "type": "info",
+    "print": "Pronto. ^500 Com essas informações já consigo saber o seu perfil. ^1000"
+  },
+  {
+    "id": 25,
+    "type": "questionInput",
+    "print": "Agora só falta o seu e-mail. ^500 Ele também vai ser o seu login. ^500 Relaxa, ^500 eu não mando spam :P",
+    "saveIn": "email",
+    "next": 26
+  },
+  {
+    "id": 26,
+    "type": "info",
+    "print": "Obrigado por suas infos, com elas sabemos que o seu perfil e...5000",
+    "next": 27
+  },
+  {
+    "id": 27,
+    "type": "info",
+    "style": "font-weight: bold;color: wine",
+    "print": "Arrojado!"
+  }
+]
