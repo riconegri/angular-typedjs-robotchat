@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ElementRef, ViewChild} from '@angular/core';
 import * as Typed from 'typed.js';
 
 @Component({
@@ -8,6 +8,7 @@ import * as Typed from 'typed.js';
 })
 
 export class RobotComponent implements OnInit {
+  @ViewChild('inputText') inputEl: ElementRef;
   @Input() survey: any[];
   @Input() reply: any = {};
   currentStep: any;
@@ -58,6 +59,8 @@ export class RobotComponent implements OnInit {
     const typedClass: any = Typed;
     const message: string[] = [this.currentStep.print];
 
+    this.scrollToTop();
+
     if (this.currentStep.erase) {
       message.push('Sorry :)!');
     }
@@ -68,7 +71,15 @@ export class RobotComponent implements OnInit {
         strings: message,
         showCursor: false,
         smartBackspace: true, // Default value,
-        onComplete: () => !isQuestion ? this.execute(this.currentStep.next) : this.setReady(true)
+        onComplete: () => {
+          if (!isQuestion) {
+            this.execute(this.currentStep.next);
+          } else {
+            this.setReady(true);
+            setTimeout(() => this.inputEl ?
+              this.inputEl.nativeElement.focus() : false, 0);
+          }
+        }
       });
     }, 100);
   }
@@ -112,6 +123,14 @@ export class RobotComponent implements OnInit {
       }
       return acc;
     }, 0);
+  }
+
+  private scrollToTop() {
+    let top = document.getElementById('scrollRef');
+    if (top != null) {
+      top.scrollIntoView();
+      top = null;
+    }
   }
 }
 
