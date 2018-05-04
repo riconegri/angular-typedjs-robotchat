@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
+/*@import '~@angular/material/theming';
 @import url('//fonts.googleapis.com/icon?family=Material+Icons');
 
 @include mat-core();
@@ -20,4 +20,5 @@ body {
 
 h1, h2, h3, h4 {
   font-weight: normal;
-}
+}*/
+@import "~bootstrap/dist/css/bootstrap.css";

@@ -3,6 +3,7 @@
     "id": 1,
     "type": "info",
     "print": "Muito bem! ^700 Você tomou a decisão certa. ^700 Eu estou aqui para te ajudar a investir em objetivos de investimento, ^500 que você mesmo vai criar com a minha ajuda. ^700 Você vai ver como isso tudo pode ser simples. ^700 Já são milhares de pessoas que investem nos seus objetivos comigo, ^500 então não se preocupe. ^700 É seguro. ^1000",
+    "style": {"color": "blue"},
     "next": 2
   },
   {
@@ -10,7 +11,13 @@
     "type": "questionInput",
     "print": "Antes de começarmos, como posso te chamar? :)",
     "saveIn": "name",
-    "next": 3
+    "next": 3,
+    "placeholder": "Informe seu nome",
+    "response": {
+      "print": "Meu nome é {{name}}",
+      "style": {"color": "#dc0600"},
+      "next": 3
+    }
   },
   {
     "id": 3,
@@ -19,7 +26,9 @@
       "name"
     ],
     "print": "Meu nome é {{name}}",
-    "next": 4
+    "alignRight": true,
+    "next": 4,
+    "style": {"color": "#dc0600"}
   },
   {
     "id": 4,
@@ -35,6 +44,7 @@
     "type": "questionInputNumber",
     "print": "Qual é a sua idade? ^1000",
     "saveIn": "age",
+    "placeholder": "Quantos aninhos?",
     "compare": [
       {
         "type": "<>",
@@ -71,7 +81,7 @@
     "id": 6,
     "type": "info",
     "print": "Nossa, ^1000 e você já sabe escrever nessa idade? ^1000",
-    "next": 7
+    "next": 5
   },
   {
     "id": 7,
@@ -89,7 +99,8 @@
     "id": 9,
     "type": "info",
     "print": "Você prefere a Madonna ou a Cindy Lauper? ^1000 <erase>(ops... chat errado) :D ^1000",
-    "next": 11
+    "next": 12,
+    "erase": true
   },
   {},
   {},
@@ -97,12 +108,14 @@
     "id": 11,
     "type": "info",
     "print": "Você prefere verão ou inverno? ^1000 <erase>(ops... chat errado) :D ^1000",
+    "erase": true,
     "next": 12
   },
   {
     "id": 12,
     "type": "questionChoose",
     "print": "Quando surge o assunto investimentos, qual é o seu primeiro pensamento?",
+    "saveIn": "investment",
     "options": [
       {
         "value": "P",
@@ -143,7 +156,8 @@
         "value": "A",
         "label": {
           "title": "Arriscar para ganhar mais"
-        }
+        },
+        "next": 16
       }
     ]
   },
@@ -293,7 +307,8 @@
   {
     "id": 24,
     "type": "info",
-    "print": "Pronto. ^500 Com essas informações já consigo saber o seu perfil. ^1000"
+    "print": "Pronto. ^500 Com essas informações já consigo saber o seu perfil. ^1000",
+    "next": 25
   },
   {
     "id": 25,
@@ -305,7 +320,7 @@
   {
     "id": 26,
     "type": "info",
-    "print": "Obrigado por suas infos, com elas sabemos que o seu perfil e...5000",
+    "print": "Obrigado por suas infos, com elas sabemos que o seu perfil é... ^5000",
     "next": 27
   },
   {

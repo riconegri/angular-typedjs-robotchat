@@ -2,7 +2,7 @@
   {
     "id": 1,
     "type": "info",
-    "print": "Muito bem! ^700 Você tomou a decisão certa. ^700 Eu estou aqui para te ajudar a investir em objetivos de investimento, ^500 que você mesmo vai criar com a minha ajuda. ^700 Você vai ver como isso tudo pode ser simples. ^700 Já são milhares de pessoas que investem nos seus objetivos comigo, ^500 então não se preocupe. ^700 É seguro. ^1000",
+    "print": "Muito bem!",
     "style": {"color": "blue"},
     "next": 2
   },
@@ -12,7 +12,13 @@
     "print": "Antes de começarmos, como posso te chamar? :)",
     "saveIn": "name",
     "next": 3,
-    "placeholder": "Informe seu nome"
+    "placeholder": "Informe seu nome",
+    "response": {
+      "print": "Meu nome é {{name}}",
+      "style": {"color": "#dc0600"},
+      "alignRight": true,
+      "next": 4
+    }
   },
   {
     "id": 3,
@@ -40,6 +46,11 @@
     "print": "Qual é a sua idade? ^1000",
     "saveIn": "age",
     "placeholder": "Quantos aninhos?",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "next": 3,
+      "alignRight": true
+    },
     "compare": [
       {
         "type": "<>",
@@ -97,8 +108,6 @@
     "next": 12,
     "erase": true
   },
-  {},
-  {},
   {
     "id": 11,
     "type": "info",
@@ -111,6 +120,10 @@
     "type": "questionChoose",
     "print": "Quando surge o assunto investimentos, qual é o seu primeiro pensamento?",
     "saveIn": "investment",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -139,6 +152,10 @@
     "type": "questionChoose",
     "print": "E com relação a investir seu dinheiro, o que é mais importante para você?",
     "saveIn": "preference",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -167,6 +184,10 @@
     "type": "questionInputNumber",
     "print": "Qual é a sua renda mensal? ^300 Esta informação vai me ajudar com algumas projeções para você (e é sigilosa também).",
     "saveIn": "income",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "compare": [
       {
         "type": "<>",
@@ -198,6 +219,10 @@
     "type": "questionChoose",
     "print": "Você lê matérias sobre economia, ^300 bolsa de valores ou investimentos em geral?",
     "saveIn": "read",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -226,6 +251,10 @@
     "type": "questionChoose",
     "print": "Nos últimos dois anos, você aplicou em produtos, como ações, LCI/LCA ou debentures?",
     "saveIn": "investment_experience",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -254,6 +283,10 @@
     "type": "questionChoose",
     "print": "Na hora de investir, o que você prefere...",
     "saveIn": "advice",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -276,6 +309,10 @@
     "type": "questionChoose",
     "print": "Ok. ^500 Quando se trata de dinheiro, ^300 como você se descreveria?",
     "saveIn": "spend",
+    "response": {
+      "style": {"color": "#dc0600"},
+      "alignRight": true
+    },
     "options": [
       {
         "value": "P",
@@ -321,7 +358,7 @@
   {
     "id": 27,
     "type": "info",
-    "style": "font-weight: bold;color: wine",
+    "style": {"font-weight": "bold;color: #dc0600"},
     "print": "Arrojado!"
   }
 ]

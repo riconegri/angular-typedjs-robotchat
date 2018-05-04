@@ -4,12 +4,11 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import {MatButtonModule} from '@angular/material';
 import {RobotModule} from './robot/robot.module';
 
 
 @NgModule({
-  exports: [MatButtonModule],
+  exports: [],
   declarations: [
     AppComponent
   ],

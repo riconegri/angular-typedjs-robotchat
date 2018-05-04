@@ -16,7 +16,12 @@ export class RobotComponent implements OnInit {
   questionIsReady: boolean;
   inputValue: any;
 
-  constructor() { }
+  constructor() {
+// * 2. add icons
+// * 3. make css responsive
+// * 4. fix scroll
+//    *
+  }
 
   ngOnInit() {
     this.execute(1);
@@ -29,14 +34,15 @@ export class RobotComponent implements OnInit {
   }
 
   execute(id: number) {
+    console.log(id);
     this.currentStep = this.getById(id);
-
     this.process();
   }
 
   process() {
     this.stepList.push(this.currentStep);
-
+    this.scrollToTop();
+    console.log('SCROLL OK');
     switch (this.currentStep.type) {
       case 'info':
         if (this.currentStep.variables) {
@@ -59,15 +65,14 @@ export class RobotComponent implements OnInit {
     const typedClass: any = Typed;
     const message: string[] = [this.currentStep.print];
 
-    this.scrollToTop();
-
     if (this.currentStep.erase) {
-      message.push('Sorry :)!');
+      message.push('Sorry !:)');
     }
 
     const cls = '.typed' + (this.stepList.length - 1);
+    console.log(cls);
     setTimeout(_ => {
-      return new typedClass(cls, {
+      this.stepList[this.stepList.length - 1].tws = new typedClass(cls, {
         strings: message,
         showCursor: false,
         smartBackspace: true, // Default value,
@@ -76,12 +81,67 @@ export class RobotComponent implements OnInit {
             this.execute(this.currentStep.next);
           } else {
             this.setReady(true);
-            setTimeout(() => this.inputEl ?
-              this.inputEl.nativeElement.focus() : false, 0);
+            setTimeout(() =>
+              this.inputEl ?
+                this.inputEl.nativeElement.focus() :
+                false, 0);
           }
+        },
+        onStart: () => {
+          this.scrollToTop();
         }
       });
     }, 100);
+  }
+
+  onlyWrite(text: string, next: number) {
+    const typedClass: any = Typed;
+    const current = this.currentStep;
+    const responseModel: any = {
+      reply: true,
+      type: 'info'
+    };
+
+    if (current.type === 'questionChoose') {
+      responseModel.print = current.options.filter(v => v.value === text)[0].label.title;
+      responseModel.next = current.options.filter(v => v.value === text)[0].next;
+    } else {
+      responseModel.print = text;
+    }
+
+    if (current.response.style) {
+      responseModel.style = current.response.style;
+    }
+    if (current.response.alignRight) {
+      responseModel.alignRight = current.response.alignRight;
+    }
+
+    this.stepList.push(responseModel);
+    this.scrollToTop();
+
+    const cls = '.typed' + (this.stepList.length - 1);
+    console.log(cls);
+    setTimeout(_ => {
+      return new typedClass(cls, {
+        strings: [responseModel.print],
+        showCursor: false,
+        smartBackspace: true, // Default value,
+        onComplete: () => {
+            this.execute(next);
+        }
+      });
+    }, 100);
+  }
+
+  restart() {
+    this.stepList.forEach(v => {
+      if (v.tws) {
+        v.tws.destroy();
+      }
+    });
+    this.stepList = [];
+    this.questionIsReady = false;
+    setTimeout(_ => this.execute(1), 300);
   }
 
   setReady(ready: boolean) {
@@ -90,18 +150,34 @@ export class RobotComponent implements OnInit {
 
   processReply(isNext) {
     let next: number;
+    const current = this.currentStep;
+    const response = current.response || null;
     // add reply to model
-    this.reply[this.currentStep.saveIn] = this.inputValue;
+    this.reply[current.saveIn] = this.inputValue;
+    // show form
     this.questionIsReady = false;
-    if (this.currentStep.compare) {
+    if (current.compare) {
       next = this.compare();
     }
     if (isNext) {
       next = isNext;
     }
+
+    if (response) {
+
+      if (response.print) {
+        response.print = response.print
+          .replace(`{{${current.saveIn}}}`, this.inputValue);
+      }
+      this.onlyWrite(
+        response.print || this.inputValue + '',
+        next ? next : response.next
+      );
+    } else {
+      this.execute(next ? next : this.currentStep.next);
+    }
     this.inputValue = null;
-    console.log(this.reply);
-    this.execute(next ? next : this.currentStep.next);
+
   }
 
   private compare() {
@@ -126,11 +202,10 @@ export class RobotComponent implements OnInit {
   }
 
   private scrollToTop() {
-    let top = document.getElementById('scrollRef');
+    const top = document.getElementById('scrollRef');
     if (top != null) {
-      top.scrollIntoView();
-      top = null;
+      top.scrollTop = top.scrollHeight;
+      document.documentElement.scrollTop = top.scrollHeight + 60;
     }
   }
 }
-

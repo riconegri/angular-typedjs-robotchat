@@ -1,14 +1,24 @@
-<div class="container" layout="row" id="scrollRef">
-  <div *ngFor="let message of stepList;let idx=index">
-    <p [ngStyle]="message.style" [ngClass]="message.alignRight ? ('alignRight typed' + idx) : ('typed' + idx)"></p>
-    <!--<app-message-component [message]="message.value" [isRight]="message.alignRight" [idx]="idx"></app-message-component>-->
+  <div class="message-body"  id="scrollRef">
+    <div class="row" *ngFor="let message of stepList;let idx=index">
+    <span
+      *ngIf="!message.alignRight"
+      class="oi oi-monitor col-2"></span>
+      <p
+        class="message col-10"
+        [ngStyle]="message.style"
+        [ngClass]="message.alignRight ? ('alignRight pr-0 typed' + idx) : ('pl-0 typed' + idx)"></p>
+      <span
+        *ngIf="message.alignRight"
+        class="oi oi-person col-2"></span>
+    </div>
   </div>
-
-  <div *ngIf="questionIsReady" class="footer">
-    <div *ngIf="currentStep.type === 'questionInput'" class="sector">
-      <div class="wrn-row wrn-container">
-        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+<div *ngIf="questionIsReady" class="navbar fixed-bottom navbar-light bg-faded footer">
+  <div *ngIf="currentStep.type === 'questionInput'" class="container">
+    <div>
+      <div class="form-inline">
+        <div class="form-group">
           <input
+            class="form-control-lg"
             type="text"
             (keyup.enter)="processReply()"
             [(ngModel)]="inputValue"
@@ -16,43 +26,52 @@
             required="true"
             #inputText
           >
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
           <button
             type="submit"
             disabled="{{!inputValue ? 'disabled' : ''}}"
             (click)="processReply()"
-            class="wrn-button"
+            class="btn btn-success btn-lg"
             mat-button>Ok
           </button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="currentStep.type === 'questionInputNumber'" class="sector">
-      <div class="wrn-row wrn-container">
-        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
-          <input
-            (keyup.enter)="processReply()"
-            type="number"
-            [(ngModel)]="inputValue"
-            placeholder="{{currentStep?.placeholder}}"
-            required="true"
-            #inputText
-          >
-          <button type="submit" disabled="{{!inputValue ? 'disabled' : ''}}" (click)="processReply()" class="wrn-button"
-                  mat-button>Ok
-          </button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="currentStep.type === 'questionChoose'" class="sector">
-      <div class="wrn-row wrn-container">
-        <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
           <button
-            type="button"
-            *ngFor="let b of (currentStep.options || [])"
-            (click)="inputValue = b.value;processReply(b.next);">
-            {{b.label.title}}
+            title="Reset"
+            type="submit"
+            (click)="restart()"
+            class="btn btn-primary btn-lg"
+          ><span class="oi oi-loop-circular"></span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="currentStep.type === 'questionInputNumber'" class="sector">
+    <div class="wrn-row wrn-container">
+      <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+        <input
+          (keyup.enter)="processReply()"
+          type="number"
+          [(ngModel)]="inputValue"
+          placeholder="{{currentStep?.placeholder}}"
+          required="true"
+          #inputText
+        >
+        <button type="submit" disabled="{{!inputValue ? 'disabled' : ''}}" (click)="processReply()" class="wrn-button"
+                mat-button>Ok
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="currentStep.type === 'questionChoose'" class="sector">
+    <div class="wrn-row wrn-container">
+      <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+        <button
+          type="button"
+          *ngFor="let b of (currentStep.options || [])"
+          (click)="inputValue = b.value;processReply(b.next);">
+          {{b.label.title}}
+        </button>
       </div>
     </div>
   </div>

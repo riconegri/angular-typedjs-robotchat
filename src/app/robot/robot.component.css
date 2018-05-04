@@ -2,14 +2,19 @@
   text-align: right;
 }
 .footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:50px;
-  width:100%;
   background:#cddc39;
 }
 
-.container {
-  padding-bottom: 100px;
+.oi.oi-monitor {
+  float: left;
+  font-size: 18px;
+  color: rebeccapurple;
+}
+.oi.oi-person {
+  font-size: 18px;
+  color: #dc0600;
+}
+
+.message-body {
+  padding-bottom: 120px;
 }
