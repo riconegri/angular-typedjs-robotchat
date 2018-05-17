@@ -1,20 +1,14 @@
-.alignRight {
-  text-align: right;
-}
 .footer {
   background:#cddc39;
 }
 
-.oi.oi-monitor {
-  float: left;
-  font-size: 18px;
-  color: rebeccapurple;
-}
-.oi.oi-person {
-  font-size: 18px;
-  color: #dc0600;
+.header {
+  background:#cddc39;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 .message-body {
   padding-bottom: 120px;
+  padding-top: 80px;
 }

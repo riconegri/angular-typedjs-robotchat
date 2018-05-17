@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "start",
     "type": "info",
     "print": "Muito bem! ^700 Você tomou a decisão certa. ^700 Eu estou aqui para te ajudar a investir em objetivos de investimento, ^500 que você mesmo vai criar com a minha ajuda. ^700 Você vai ver como isso tudo pode ser simples. ^700 Já são milhares de pessoas que investem nos seus objetivos comigo, ^500 então não se preocupe. ^700 É seguro. ^1000",
     "style": {"color": "blue"},

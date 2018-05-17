@@ -1,0 +1,43 @@
+.no-align {
+  padding-right: 188px;
+}
+.alignRight {
+  text-align: right;
+  padding-left: 188px;
+}
+
+.oi.oi-monitor {
+  font-size: 18px;
+  color: rebeccapurple;
+  text-align: right;
+}
+.oi.oi-person {
+  font-size: 18px;
+  color: #dc0600;
+}
+
+@media (min-width: 576px) {
+  .alignRight {
+    padding-left: 20px;
+  }
+  .no-align {
+    padding-right: 20px;
+  }
+}
+@media (min-width: 320px) {
+  .alignRight {
+    padding-left: 20px;
+  }
+  .no-align {
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .alignRight {
+    padding-left: 120px;
+  }
+  .no-align {
+    padding-right: 120px;
+  }
+}

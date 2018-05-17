@@ -1,0 +1,69 @@
+<form>
+  <div *ngIf="robotService.currentStep.type === 'questionInput'" class="container">
+    <div>
+      <div class="form-inline">
+        <div class="form-group">
+          <input
+            class="form-control-xs"
+            type="text"
+            (keyup.enter)="robotService.processReply()"
+            [(ngModel)]="robotService.inputValue"
+            name="inputValue"
+            placeholder="{{robotService.currentStep?.placeholder}}"
+            required="required"
+            #inputText
+          >
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            type="submit"
+            disabled="{{!robotService.inputValue ? 'disabled' : ''}}"
+            (click)="robotService.processReply()"
+            class="btn btn-success btn-lg"
+            mat-button>Ok
+          </button>
+          <button
+            title="Reset"
+            type="submit"
+            (click)="robotService.restart()"
+            class="btn btn-primary btn-lg"
+          ><span class="oi oi-loop-circular"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="robotService.currentStep.type === 'questionInputNumber'" class="sector">
+    <div class="wrn-row wrn-container">
+      <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+        <input
+          name="inputValue"
+          (keyup.enter)="robotService.processReply()"
+          type="number"
+          [(ngModel)]="robotService.inputValue"
+          placeholder="{{robotService.currentStep?.placeholder}}"
+          required="true"
+          #inputText
+        >
+        <button type="submit" disabled="{{!robotService.inputValue ? 'disabled' : ''}}"
+                (click)="robotService.processReply()" class="wrn-button"
+                mat-button>Ok
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="robotService.currentStep.type === 'questionChoose'" class="sector">
+    <div class="wrn-row wrn-container">
+      <div class="wrn-c-sm-9 wrn-c-lg-10 wrn-hidden-desktop">
+        <button
+          type="button"
+          *ngFor="let b of (robotService.currentStep.options || [])"
+          (click)="robotService.inputValue = b.value;robotService.processReply(b.next);">
+          {{b.label.title}}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

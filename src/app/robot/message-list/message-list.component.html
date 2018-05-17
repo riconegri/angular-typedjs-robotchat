@@ -1,0 +1,13 @@
+<div class="row" *ngFor="let message of robotService.stepList;let idx=index">
+  <!--<span>{{message|json}}</span>-->
+  <span
+    *ngIf="!message.alignRight"
+    class="oi oi-monitor col-2"></span>
+  <p
+    class="message col-10"
+    [ngStyle]="message.style"
+    [ngClass]="message.alignRight ? ('alignRight pr-0 typed' + idx) : ('no-align pl-0 typed' + idx)"></p>
+  <span
+    *ngIf="message.alignRight"
+    class="oi oi-person col-2"></span>
+</div>
